@@ -128,6 +128,8 @@ export interface Lesson {
   topic?: string;
   status: string;
   teacherId?: number;
+  homework?: string;
+  homeworkDueDate?: Date;
 }
 
 export interface Attendance {
@@ -135,6 +137,16 @@ export interface Attendance {
   lessonId: number;
   studentId: number;
   status: string;
+  comment?: string;
+}
+
+// New interfaces for grades/marks
+export interface Grade {
+  id: number;
+  lessonId: number;
+  studentId: number;
+  score: number;
+  maxScore: number;
   comment?: string;
 }
 
@@ -718,37 +730,195 @@ export const enrollments: Enrollment[] = [
 ];
 
 export const lessons: Lesson[] = [
+  // Group 1 lessons - February 2026
   {
     id: 1,
     groupId: 1,
-    date: new Date("2024-02-05 10:00"),
+    date: new Date("2026-02-03 10:00"),
     topic: "Introduction to English Alphabet",
     status: "completed",
     teacherId: 3,
+    homework: "Write a short paragraph about your family",
+    homeworkDueDate: new Date("2026-02-05"),
   },
   {
     id: 2,
     groupId: 1,
-    date: new Date("2024-02-07 10:00"),
-    topic: "Basic Greetings",
+    date: new Date("2026-02-05 10:00"),
+    topic: "Basic Greetings & Introductions",
     status: "completed",
     teacherId: 3,
+    homework: "Practice introducing yourself to 3 people",
+    homeworkDueDate: new Date("2026-02-07"),
   },
   {
     id: 3,
     groupId: 1,
-    date: new Date("2024-02-12 10:00"),
-    topic: "Numbers and Counting",
+    date: new Date("2026-02-07 10:00"),
+    topic: "Numbers and Counting 1-100",
+    status: "completed",
+    teacherId: 3,
+    homework: "Count objects in your room and write numbers",
+    homeworkDueDate: new Date("2026-02-10"),
+  },
+  {
+    id: 4,
+    groupId: 1,
+    date: new Date("2026-02-10 10:00"),
+    topic: "Monthly Test - Units 1-3",
+    status: "completed",
+    teacherId: 3,
+  },
+  {
+    id: 5,
+    groupId: 1,
+    date: new Date("2026-02-12 10:00"),
+    topic: "Days of the Week & Daily Routines",
+    status: "completed",
+    teacherId: 3,
+    homework: "Describe your daily routine in English",
+    homeworkDueDate: new Date("2026-02-14"),
+  },
+  {
+    id: 6,
+    groupId: 1,
+    date: new Date("2026-02-14 10:00"),
+    topic: "Colors and Describing Objects",
+    status: "completed",
+    teacherId: 3,
+    homework: "Describe 5 objects using colors and adjectives",
+    homeworkDueDate: new Date("2026-02-17"),
+  },
+  {
+    id: 7,
+    groupId: 1,
+    date: new Date("2026-02-17 10:00"),
+    topic: "Family Members & Relationships",
     status: "planned",
     teacherId: 3,
+    homework: "Draw your family tree with English labels",
+    homeworkDueDate: new Date("2026-02-19"),
+  },
+  {
+    id: 8,
+    groupId: 1,
+    date: new Date("2026-02-19 10:00"),
+    topic: "Present Simple Tense - Part 1",
+    status: "planned",
+    teacherId: 3,
+    homework: "Complete exercises 1-5 on page 24",
+    homeworkDueDate: new Date("2026-02-21"),
+  },
+  {
+    id: 9,
+    groupId: 1,
+    date: new Date("2026-02-21 10:00"),
+    topic: "Present Simple Tense - Part 2",
+    status: "planned",
+    teacherId: 3,
+    homework: "Write 10 sentences about your habits",
+    homeworkDueDate: new Date("2026-02-24"),
+  },
+  {
+    id: 10,
+    groupId: 1,
+    date: new Date("2026-02-24 10:00"),
+    topic: "Food and Drinks Vocabulary",
+    status: "planned",
+    teacherId: 3,
+    homework: "Create a menu for your dream restaurant",
+    homeworkDueDate: new Date("2026-02-26"),
+  },
+  // Group 2 lessons
+  {
+    id: 11,
+    groupId: 2,
+    date: new Date("2026-02-05 18:00"),
+    topic: "Review of Present Tenses",
+    status: "completed",
+    teacherId: 4,
+    homework: "Complete grammar worksheet",
+    homeworkDueDate: new Date("2026-02-07"),
+  },
+  {
+    id: 12,
+    groupId: 2,
+    date: new Date("2026-02-07 18:00"),
+    topic: "Past Simple Tense",
+    status: "completed",
+    teacherId: 4,
+    homework: "Write about your last weekend",
+    homeworkDueDate: new Date("2026-02-12"),
   },
 ];
 
 export const attendanceRecords: Attendance[] = [
-  { id: 1, lessonId: 1, studentId: 5, status: "present", comment: "" },
-  { id: 2, lessonId: 1, studentId: 6, status: "present", comment: "" },
-  { id: 3, lessonId: 2, studentId: 5, status: "present", comment: "" },
-  { id: 4, lessonId: 2, studentId: 6, status: "absent", comment: "Sick" },
+  // Lesson 1 attendance (Feb 3)
+  { id: 1, lessonId: 1, studentId: 8, status: "present", comment: "" },
+  { id: 2, lessonId: 1, studentId: 9, status: "present", comment: "" },
+  { id: 3, lessonId: 1, studentId: 10, status: "present", comment: "" },
+  { id: 4, lessonId: 1, studentId: 11, status: "present", comment: "" },
+  { id: 5, lessonId: 1, studentId: 12, status: "present", comment: "" },
+  { id: 6, lessonId: 1, studentId: 13, status: "present", comment: "" },
+  { id: 7, lessonId: 1, studentId: 14, status: "present", comment: "" },
+  { id: 8, lessonId: 1, studentId: 15, status: "present", comment: "" },
+  { id: 9, lessonId: 1, studentId: 16, status: "present", comment: "" },
+  { id: 10, lessonId: 1, studentId: 17, status: "present", comment: "" },
+  // Lesson 2 attendance (Feb 5)
+  { id: 11, lessonId: 2, studentId: 8, status: "present", comment: "" },
+  { id: 12, lessonId: 2, studentId: 9, status: "present", comment: "" },
+  { id: 13, lessonId: 2, studentId: 10, status: "present", comment: "" },
+  { id: 14, lessonId: 2, studentId: 11, status: "present", comment: "" },
+  { id: 15, lessonId: 2, studentId: 12, status: "absent", comment: "Kasal" },
+  { id: 16, lessonId: 2, studentId: 13, status: "present", comment: "" },
+  { id: 17, lessonId: 2, studentId: 14, status: "present", comment: "" },
+  { id: 18, lessonId: 2, studentId: 15, status: "present", comment: "" },
+  { id: 19, lessonId: 2, studentId: 16, status: "present", comment: "" },
+  { id: 20, lessonId: 2, studentId: 17, status: "excused", comment: "Shifokor oldida" },
+  // Lesson 3 attendance (Feb 7)
+  { id: 21, lessonId: 3, studentId: 8, status: "present", comment: "" },
+  { id: 22, lessonId: 3, studentId: 9, status: "present", comment: "" },
+  { id: 23, lessonId: 3, studentId: 10, status: "present", comment: "" },
+  { id: 24, lessonId: 3, studentId: 11, status: "present", comment: "" },
+  { id: 25, lessonId: 3, studentId: 12, status: "present", comment: "" },
+  { id: 26, lessonId: 3, studentId: 13, status: "present", comment: "" },
+  { id: 27, lessonId: 3, studentId: 14, status: "present", comment: "" },
+  { id: 28, lessonId: 3, studentId: 15, status: "absent", comment: "" },
+  { id: 29, lessonId: 3, studentId: 16, status: "present", comment: "" },
+  { id: 30, lessonId: 3, studentId: 17, status: "present", comment: "" },
+  // Lesson 4 attendance (Feb 10 - Test)
+  { id: 31, lessonId: 4, studentId: 8, status: "present", comment: "" },
+  { id: 32, lessonId: 4, studentId: 9, status: "present", comment: "" },
+  { id: 33, lessonId: 4, studentId: 10, status: "present", comment: "" },
+  { id: 34, lessonId: 4, studentId: 11, status: "present", comment: "" },
+  { id: 35, lessonId: 4, studentId: 12, status: "present", comment: "" },
+  { id: 36, lessonId: 4, studentId: 13, status: "present", comment: "" },
+  { id: 37, lessonId: 4, studentId: 14, status: "present", comment: "" },
+  { id: 38, lessonId: 4, studentId: 15, status: "present", comment: "" },
+  { id: 39, lessonId: 4, studentId: 16, status: "present", comment: "" },
+  { id: 40, lessonId: 4, studentId: 17, status: "present", comment: "" },
+  // Lesson 5 attendance (Feb 12)
+  { id: 41, lessonId: 5, studentId: 8, status: "present", comment: "" },
+  { id: 42, lessonId: 5, studentId: 9, status: "present", comment: "" },
+  { id: 43, lessonId: 5, studentId: 10, status: "present", comment: "" },
+  { id: 44, lessonId: 5, studentId: 11, status: "present", comment: "" },
+  { id: 45, lessonId: 5, studentId: 12, status: "excused", comment: "Oilaviy holat" },
+  { id: 46, lessonId: 5, studentId: 13, status: "present", comment: "" },
+  { id: 47, lessonId: 5, studentId: 14, status: "present", comment: "" },
+  { id: 48, lessonId: 5, studentId: 15, status: "present", comment: "" },
+  { id: 49, lessonId: 5, studentId: 16, status: "absent", comment: "" },
+  { id: 50, lessonId: 5, studentId: 17, status: "absent", comment: "" },
+  // Lesson 6 attendance (Feb 14)
+  { id: 51, lessonId: 6, studentId: 8, status: "present", comment: "" },
+  { id: 52, lessonId: 6, studentId: 9, status: "present", comment: "" },
+  { id: 53, lessonId: 6, studentId: 10, status: "present", comment: "" },
+  { id: 54, lessonId: 6, studentId: 11, status: "present", comment: "" },
+  { id: 55, lessonId: 6, studentId: 12, status: "present", comment: "" },
+  { id: 56, lessonId: 6, studentId: 13, status: "present", comment: "" },
+  { id: 57, lessonId: 6, studentId: 14, status: "excused", comment: "Kasallik" },
+  { id: 58, lessonId: 6, studentId: 15, status: "present", comment: "" },
+  { id: 59, lessonId: 6, studentId: 16, status: "present", comment: "" },
+  { id: 60, lessonId: 6, studentId: 17, status: "present", comment: "" },
 ];
 
 export const leads: Lead[] = [
@@ -840,3 +1010,78 @@ export const getTransactionsByTenantId = (tenantId: number) => transactions.filt
 export const getEnrollmentsByStudentId = (studentId: number) => enrollments.filter((e) => e.studentId === studentId);
 export const getGroupsByTeacherId = (teacherId: number) => groups.filter((g) => g.teacherId === teacherId);
 export const getLessonsByGroupId = (groupId: number) => lessons.filter((l) => l.groupId === groupId);
+
+// Grades mock data - comprehensive marks for all students in lessons
+export const grades: Grade[] = [
+  // Lesson 1 grades
+  { id: 1, lessonId: 1, studentId: 8, score: 100, maxScore: 100 },
+  { id: 2, lessonId: 1, studentId: 9, score: 100, maxScore: 100 },
+  { id: 3, lessonId: 1, studentId: 10, score: 100, maxScore: 100 },
+  { id: 4, lessonId: 1, studentId: 11, score: 100, maxScore: 100 },
+  { id: 5, lessonId: 1, studentId: 12, score: 100, maxScore: 100 },
+  { id: 6, lessonId: 1, studentId: 13, score: 100, maxScore: 100 },
+  { id: 7, lessonId: 1, studentId: 14, score: 100, maxScore: 100 },
+  { id: 8, lessonId: 1, studentId: 15, score: 100, maxScore: 100 },
+  { id: 9, lessonId: 1, studentId: 16, score: 100, maxScore: 100 },
+  { id: 10, lessonId: 1, studentId: 17, score: 100, maxScore: 100 },
+  // Lesson 2 grades
+  { id: 11, lessonId: 2, studentId: 8, score: 100, maxScore: 100 },
+  { id: 12, lessonId: 2, studentId: 9, score: 98, maxScore: 100 },
+  { id: 13, lessonId: 2, studentId: 10, score: 100, maxScore: 100 },
+  { id: 14, lessonId: 2, studentId: 11, score: 100, maxScore: 100 },
+  { id: 15, lessonId: 2, studentId: 12, score: 98, maxScore: 100 },
+  { id: 16, lessonId: 2, studentId: 13, score: 100, maxScore: 100 },
+  { id: 17, lessonId: 2, studentId: 14, score: 100, maxScore: 100 },
+  { id: 18, lessonId: 2, studentId: 15, score: 100, maxScore: 100 },
+  { id: 19, lessonId: 2, studentId: 16, score: 100, maxScore: 100 },
+  { id: 20, lessonId: 2, studentId: 17, score: 100, maxScore: 100 },
+  // Lesson 3 grades
+  { id: 21, lessonId: 3, studentId: 8, score: 96, maxScore: 100 },
+  { id: 22, lessonId: 3, studentId: 9, score: 88, maxScore: 100 },
+  { id: 23, lessonId: 3, studentId: 10, score: 100, maxScore: 100 },
+  { id: 24, lessonId: 3, studentId: 11, score: 98, maxScore: 100 },
+  { id: 25, lessonId: 3, studentId: 12, score: 98, maxScore: 100 },
+  { id: 26, lessonId: 3, studentId: 13, score: 98, maxScore: 100 },
+  { id: 27, lessonId: 3, studentId: 14, score: 98, maxScore: 100 },
+  { id: 28, lessonId: 3, studentId: 15, score: 96, maxScore: 100 },
+  { id: 29, lessonId: 3, studentId: 16, score: 94, maxScore: 100 },
+  { id: 30, lessonId: 3, studentId: 17, score: 95, maxScore: 100 },
+  // Lesson 4 grades (Test)
+  { id: 31, lessonId: 4, studentId: 8, score: 92, maxScore: 100 },
+  { id: 32, lessonId: 4, studentId: 9, score: 100, maxScore: 100 },
+  { id: 33, lessonId: 4, studentId: 10, score: 80, maxScore: 100 },
+  { id: 34, lessonId: 4, studentId: 11, score: 88, maxScore: 100 },
+  { id: 35, lessonId: 4, studentId: 12, score: 80, maxScore: 100 },
+  { id: 36, lessonId: 4, studentId: 13, score: 80, maxScore: 100 },
+  { id: 37, lessonId: 4, studentId: 14, score: 85, maxScore: 100 },
+  { id: 38, lessonId: 4, studentId: 15, score: 85, maxScore: 100 },
+  { id: 39, lessonId: 4, studentId: 16, score: 80, maxScore: 100 },
+  { id: 40, lessonId: 4, studentId: 17, score: 80, maxScore: 100 },
+  // Lesson 5 grades
+  { id: 41, lessonId: 5, studentId: 8, score: 100, maxScore: 100 },
+  { id: 42, lessonId: 5, studentId: 9, score: 98, maxScore: 100 },
+  { id: 43, lessonId: 5, studentId: 10, score: 80, maxScore: 100 },
+  { id: 44, lessonId: 5, studentId: 11, score: 96, maxScore: 100 },
+  { id: 45, lessonId: 5, studentId: 12, score: 85, maxScore: 100 },
+  { id: 46, lessonId: 5, studentId: 13, score: 97, maxScore: 100 },
+  { id: 47, lessonId: 5, studentId: 14, score: 96, maxScore: 100 },
+  { id: 48, lessonId: 5, studentId: 15, score: 85, maxScore: 100 },
+  { id: 49, lessonId: 5, studentId: 16, score: 63, maxScore: 100 },
+  { id: 50, lessonId: 5, studentId: 17, score: 0, maxScore: 100 }, // Absent
+  // Lesson 6 grades  
+  { id: 51, lessonId: 6, studentId: 8, score: 95, maxScore: 100 },
+  { id: 52, lessonId: 6, studentId: 9, score: 92, maxScore: 100 },
+  { id: 53, lessonId: 6, studentId: 10, score: 88, maxScore: 100 },
+  { id: 54, lessonId: 6, studentId: 11, score: 94, maxScore: 100 },
+  { id: 55, lessonId: 6, studentId: 12, score: 90, maxScore: 100 },
+  { id: 56, lessonId: 6, studentId: 13, score: 96, maxScore: 100 },
+  { id: 57, lessonId: 6, studentId: 14, score: 93, maxScore: 100 },
+  { id: 58, lessonId: 6, studentId: 15, score: 91, maxScore: 100 },
+  { id: 59, lessonId: 6, studentId: 16, score: 87, maxScore: 100 },
+  { id: 60, lessonId: 6, studentId: 17, score: 89, maxScore: 100 },
+];
+
+export const getGradesByLessonId = (lessonId: number) => grades.filter((g) => g.lessonId === lessonId);
+export const getGradesByStudentId = (studentId: number) => grades.filter((g) => g.studentId === studentId);
+export const getAttendanceByLessonId = (lessonId: number) => attendanceRecords.filter((a) => a.lessonId === lessonId);
+export const getUserById = (userId: number) => users.find((u) => u.id === userId);

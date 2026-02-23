@@ -25,7 +25,7 @@ export default function MyGroupsPage({ teacherId }: MyGroupsPageProps) {
 
       {/* Statistics */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <Card className="dark:bg-gray-900 dark:border-gray-800 hover:shadow-xl transition-all duration-300">
+        <Card className="border-2 hover:shadow-xl transition-all duration-300 dark:bg-gray-900 dark:border-gray-800">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium dark:text-gray-300">
               Jami Guruhlar
@@ -44,7 +44,7 @@ export default function MyGroupsPage({ teacherId }: MyGroupsPageProps) {
           </CardContent>
         </Card>
 
-        <Card className="dark:bg-gray-900 dark:border-gray-800 hover:shadow-xl transition-all duration-300">
+        <Card className="border-2 hover:shadow-xl transition-all duration-300 dark:bg-gray-900 dark:border-gray-800">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium dark:text-gray-300">
               Jami O'quvchilar
@@ -63,7 +63,7 @@ export default function MyGroupsPage({ teacherId }: MyGroupsPageProps) {
           </CardContent>
         </Card>
 
-        <Card className="dark:bg-gray-900 dark:border-gray-800 hover:shadow-xl transition-all duration-300">
+        <Card className="border-2 hover:shadow-xl transition-all duration-300 dark:bg-gray-900 dark:border-gray-800">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium dark:text-gray-300">
               Aktiv Guruhlar
@@ -92,7 +92,7 @@ export default function MyGroupsPage({ teacherId }: MyGroupsPageProps) {
           return (
             <Card 
               key={group.id} 
-              className="hover:shadow-xl transition-all duration-300 dark:bg-gray-900 dark:border-gray-800"
+              className="border-2 hover:shadow-xl transition-all duration-300 dark:bg-gray-900 dark:border-gray-800"
             >
               <CardHeader>
                 <div className="flex items-start justify-between">

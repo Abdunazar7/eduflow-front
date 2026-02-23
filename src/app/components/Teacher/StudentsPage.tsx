@@ -105,7 +105,7 @@ export default function StudentsPage({ teacherId }: StudentsPageProps) {
 
       {/* Statistics Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        <Card className="dark:bg-gray-900 dark:border-gray-800 hover:shadow-xl transition-all duration-300">
+        <Card className="border-2 hover:shadow-xl transition-all duration-300 dark:bg-gray-900 dark:border-gray-800">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium dark:text-gray-300">
               Jami O'quvchilar
@@ -124,7 +124,7 @@ export default function StudentsPage({ teacherId }: StudentsPageProps) {
           </CardContent>
         </Card>
 
-        <Card className="dark:bg-gray-900 dark:border-gray-800 hover:shadow-xl transition-all duration-300">
+        <Card className="border-2 hover:shadow-xl transition-all duration-300 dark:bg-gray-900 dark:border-gray-800">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium dark:text-gray-300">
               O'rtacha Ball
@@ -143,7 +143,7 @@ export default function StudentsPage({ teacherId }: StudentsPageProps) {
           </CardContent>
         </Card>
 
-        <Card className="dark:bg-gray-900 dark:border-gray-800 hover:shadow-xl transition-all duration-300">
+        <Card className="border-2 hover:shadow-xl transition-all duration-300 dark:bg-gray-900 dark:border-gray-800">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium dark:text-gray-300">
               Darslar Soni
@@ -162,7 +162,7 @@ export default function StudentsPage({ teacherId }: StudentsPageProps) {
           </CardContent>
         </Card>
 
-        <Card className="dark:bg-gray-900 dark:border-gray-800 hover:shadow-xl transition-all duration-300">
+        <Card className="border-2 hover:shadow-xl transition-all duration-300 dark:bg-gray-900 dark:border-gray-800">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium dark:text-gray-300">
               O'rtacha Davomat
@@ -183,7 +183,7 @@ export default function StudentsPage({ teacherId }: StudentsPageProps) {
       </div>
 
       {/* Students List */}
-      <Card className="dark:bg-gray-900 dark:border-gray-800 hover:shadow-xl transition-all duration-300">
+      <Card className="border-2 hover:shadow-xl transition-all duration-300 dark:bg-gray-900 dark:border-gray-800">
         <CardHeader>
           <div className="flex items-center justify-between">
             <div>

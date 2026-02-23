@@ -4,21 +4,11 @@ import { Button } from "../ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Badge } from "../ui/badge";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
-import {
   Bell,
   ChevronLeft,
   ChevronRight,
   Moon,
   Sun,
-  User,
-  LogOut,
 } from "lucide-react";
 import { toast } from "sonner";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "../ui/alert-dialog";
@@ -31,10 +21,12 @@ interface NavigationItem {
 
 interface DashboardLayoutProps {
   children: ReactNode;
-  role: string;
+  currentPage: string;
+  setCurrentPage: (page: string) => void;
+  navigation: NavigationItem[];
   userName: string;
+  userRole: string;
   userPhoto?: string;
-  menuItems: NavigationItem[];
   notificationCount?: number;
   sidebarColor?: string;
   onLogout: () => void;
@@ -44,11 +36,14 @@ interface DashboardLayoutProps {
 }
 
 export default function DashboardLayout({
-  role,
+  currentPage,
+  setCurrentPage,
+  navigation,
   userName,
+  userRole,
   userPhoto,
-  menuItems,
   children,
+  notificationCount,
   sidebarColor = "bg-gradient-to-b from-indigo-700 to-indigo-900",
   onNavigateToProfile,
   onNavigateToNotifications,
@@ -115,7 +110,7 @@ export default function DashboardLayout({
                 </div>
               )}
               <div>
-                <h1 className="text-lg font-semibold mb-0.5">{role}</h1>
+                <h1 className="text-lg font-semibold mb-0.5">{userRole}</h1>
                 <p className="text-xs text-white/70 dark:text-gray-400">Dashboard</p>
               </div>
             </div>
@@ -134,16 +129,16 @@ export default function DashboardLayout({
 
         {/* Navigation */}
         <nav className="flex-1 px-3 py-4 overflow-y-auto">
-          {menuItems.map((item) => {
+          {navigation.map((item) => {
             const Icon = item.icon;
-            const isActive = role === item.id;
+            const isActive = currentPage === item.id;
             return (
               <button
                 key={item.id}
-                onClick={() => onNavigateToProfile()}
+                onClick={() => setCurrentPage(item.id)}
                 className={`w-full flex items-center gap-3 px-3 py-3 rounded-lg mb-1 transition-all ${ isActive
                     ? "bg-white/20 dark:bg-gray-700/50 text-white shadow-lg scale-105"
-                    : "text-white/70 dark:text-gray-400 hover:bg-white/10 dark:hover:bg-gray-700/30 hover:text-white"
+                    : "text-white/70 dark:text-gray-400 bg-transparent text-white"
                 } ${!showSidebarContent ? "justify-center" : ""}`}
                 title={!showSidebarContent ? item.name : undefined}
               >
@@ -162,7 +157,7 @@ export default function DashboardLayout({
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">
-                {menuItems.find((item) => item.id === role)?.name || "Dashboard"}
+                {navigation.find((item) => item.id === currentPage)?.name || "Dashboard"}
               </h2>
               <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5">
                 Xush kelibsiz, {userName}
@@ -199,39 +194,23 @@ export default function DashboardLayout({
                 )}
               </Button>
 
-              {/* User Profile Dropdown */}
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className="flex items-center gap-3 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg">
-                    <Avatar className="size-9">
-                      <AvatarImage src={userPhoto} />
-                      <AvatarFallback className="bg-gradient-to-br from-indigo-500 to-purple-600 text-white font-semibold">
-                        {userName.charAt(0).toUpperCase()}
-                      </AvatarFallback>
-                    </Avatar>
-                    <div className="text-left hidden md:block">
-                      <p className="text-sm font-medium text-gray-900 dark:text-white">{userName}</p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">{role}</p>
-                    </div>
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-56 dark:bg-gray-800 dark:border-gray-700">
-                  <DropdownMenuLabel className="dark:text-gray-200">Mening Profilim</DropdownMenuLabel>
-                  <DropdownMenuSeparator className="dark:bg-gray-700" />
-                  <DropdownMenuItem onClick={onNavigateToProfile} className="dark:hover:bg-gray-700 dark:text-gray-200">
-                    <User className="size-4 mr-2" />
-                    Profilni Ko'rish
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator className="dark:bg-gray-700" />
-                  <DropdownMenuItem 
-                    onClick={handleLogoutClick} 
-                    className="text-red-600 dark:text-red-400 dark:hover:bg-red-950/50 focus:text-red-600 dark:focus:text-red-400"
-                  >
-                    <LogOut className="size-4 mr-2" />
-                    Tizimdan Chiqish
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+              {/* User Profile */}
+              <Button 
+                variant="ghost" 
+                onClick={onNavigateToProfile}
+                className="flex items-center gap-3 px-3 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg"
+              >
+                <Avatar className="size-9">
+                  <AvatarImage src={userPhoto} />
+                  <AvatarFallback className="bg-gradient-to-br from-indigo-500 to-purple-600 text-white font-semibold">
+                    {userName.charAt(0).toUpperCase()}
+                  </AvatarFallback>
+                </Avatar>
+                <div className="text-left hidden md:block">
+                  <p className="text-sm font-medium text-gray-900 dark:text-white">{userName}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">{userRole}</p>
+                </div>
+              </Button>
             </div>
           </div>
         </div>
