@@ -117,7 +117,7 @@
                 </div>
               </div>
             </div>
-            <h1 className="text-4xl mb-3 bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
+            <h1 className="text-4xl mb-3 bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text">
               Language LMS
             </h1>
             <p className="text-slate-600 dark:text-slate-400 text-lg">
